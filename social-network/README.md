@@ -45,6 +45,8 @@ python manage.py collectstatic
 
 ### Endpoint
 - http://127.0.0.1:8000/
+- http://127.0.0.1:8000/admin
+	- (account : admin, pwd : 0000)
 
 ## Ref
 - https://www.youtube.com/watch?v=ozr6NEomLQw&list=PLgjw1dR712joFJvX_WKIuglbR1SNCeno1&index=1
