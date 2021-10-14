@@ -3,7 +3,8 @@
 ## Init
 ```bash
 # 1) set up env
-conda create -n social python=3.8 # python 3.8
+# python 3.8
+conda create -n social python=3.8
 
 # 2) activate env
 source activate social
