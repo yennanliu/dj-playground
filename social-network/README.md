@@ -1,6 +1,18 @@
 # Social-network
 
+## Main components
+- profiles
+	- Profile
+	- Relationship
+- posts
+	- Post
+	- Comment
+	- Like
+- allAuth (authentication)
+
 ## Init
+
+### Part 1
 ```bash
 # 1) set up env
 # python 3.8
@@ -42,6 +54,14 @@ python manage.py collectstatic
 
 # (social) yennanliu@MacBook-Pro src % python manage.py collectstatic
 # 130 static files copied to '/Users/yennanliu/dj-playground/social-network/static_cdn/static_root'.
+```
+
+### Part 2
+```python
+# create new app
+cd dj-playground/social-network/src
+python manage.py startapp profiles
+python manage.py startapp posts
 ```
 
 ### Endpoint
