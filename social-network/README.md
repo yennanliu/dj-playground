@@ -64,6 +64,7 @@ python manage.py startapp profiles
 python manage.py startapp posts
 
 python manage.py makemigrations
+python manage.py migrate
 ```
 
 ### Endpoint
