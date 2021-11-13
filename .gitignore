@@ -1,4 +1,7 @@
 social-network/src/mybffbook/__pycache__/*
+social-network/src/mybffbook/__pycache__/*pyc
 social-network/src/mybffbook/__pycache__
+social-network/src/posts/__pycache__
+social-network/src/posts/__pycache__/*pyc
 .idea
 social-network/.idea
