@@ -62,6 +62,8 @@ python manage.py collectstatic
 cd dj-playground/social-network/src
 python manage.py startapp profiles
 python manage.py startapp posts
+
+python manage.py makemigrations
 ```
 
 ### Endpoint
