@@ -20,6 +20,7 @@ conda create -n social python=3.8
 
 # 2) activate env
 source activate social
+conda activate django-38
 
 # 3) install django 3.0.5
 pip install django==3.0.5
