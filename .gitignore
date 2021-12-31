@@ -6,3 +6,5 @@ social-network/src/posts/__pycache__/*pyc
 	social-network/src/profiles/__pycache__/*.pyc
 .idea
 social-network/.idea
+.DS_Store
+dj-restaurants/.DS_Store
