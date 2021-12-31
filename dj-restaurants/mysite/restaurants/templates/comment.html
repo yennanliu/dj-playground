@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %} Comment {% endblock %}
+
+{% block content %}
+        <h2>{{ r.name }}'s comment </h2>
+        {% if r.comment_set.all %}
+        <p>There are {{ r.comment_set.all|length }} comments</p>
+        <table class="table table-hover">
+            <tr>
+                <th>Visitor</th>
+                <th>Time</th>
+                <th>Comment</th>
+            </tr>
+            {% for c in r.comment_set.all %}
+            <tr>
+                <td> {{ c.visitor }} </td>
+                <td> {{ c.date_time | date:"F j, Y" }} </td>
+                <td> {{ c.content }} </td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <p>No comment</p>
+        {% endif %}
+
+        <br /><br />
+        {% if form.errors %}
+        <p style="color:red;">
+            Please fix ur comment by msg
+        </p>
+        {% endif %}
+
+        <form action="" method="post" class="form-horizontal" role="form" style="width:33%; margin:auto; text-align:left">{% csrf_token %}
+            <div class="form-group">
+            <label for="visitor">Visitor:</label>
+            {{ form.visitor }}
+            {{ form.visitor.errors }}
+            </div>
+            <div class="form-group">
+                <label for="email">email:</label>
+            {{ form.email }}
+            {{ form.email.errors }}
+            </div>
+            <div class="form-group">
+            <label for="content">comment:</label>
+            {{ form.content }}
+            {{ form.content.errors }}
+            </div>
+            <input type="submit" value="give_comment" class="btn btn-default">
+        </form>
+{% endblock %}

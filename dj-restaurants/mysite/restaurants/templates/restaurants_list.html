@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %} Restaurants {% endblock %}
+
+{% block content %}
+        <h2>Restaurant List</h2>
+        <form action="/menu/" method="get">
+        <table class="table table-hover">
+            <tr>
+                <th>Choose</th>
+                <th>Restaurant Name</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Comment</th>
+            </tr>
+            {% for r in restaurants %}
+            <tr>
+<!--             <td> <input type="radio" name="id" value="{{r.id}}"> </td> -->
+                 <td> <a href="/menu/{{r.id}}"> View menu </td>
+                <td> {{ r.name }} </td>
+                <td> {{ r.phone_number }} </td>
+                <td> {{ r.address }} </td>
+                <td> <a href="/comment/{{r.id}}/"> Comment </a> </td> 
+            </tr>
+            {% endfor %}
+        </table>
+<!--         <input type="submit" value="view_menu" class="btn btn-default"> -->
+        </form>
+{% endblock %}

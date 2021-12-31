@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title> MENU </title>
+      <meta charset="utf-8">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+      <style>
+         th {text-align: center;}
+         div.menus{
+         text-align: center;
+         padding: 50px 15px;
+         }
+      </style>
+   </head>
+   <body>
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+         <div class="container">
+            <div class="navbar-header">
+               <button type="button"
+                  class="navbar-toggle collapsed"
+                  data-toggle="collapse" data-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar">
+               <span class="sr-only">Toggle navigation</span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>               
+               </button>
+               <a class="navbar-brand" href="/index">Mysite</a>
+               <a class="navbar-brand" href="/restaurants_list">Restaurants List</a>
+            </div>
+         </div>
+      </nav>
+      <div class="container">
+         <div class="menus">
+            <p>You are now at {{ path }}</p>
+            <p> 
+            <h2>{{ restaurant.name }} 's menu</h2>
+            {% if restaurant.food_set.all %}
+            <p>There are {{restaurant.food_set.all | length}} dishes in total </p>
+            <table class="table">
+               <tr>
+                  <th>food name</th>
+                  <th>price</th>
+                  <th>spicy_or_not</th>
+                  <th>comment</th>
+               </tr>
+               {% for food in restaurant.food_set.all %}
+               <tr>
+                  <td> {{food.name}} </td>
+                  <td> {{food.price}} </td>
+                  <td> {% if food.is_spicy %}  SPICY {% else %} NOT SPICY {% endif %} </td>
+                  <td> {{food.comment}} </td>
+               </tr>
+               {% endfor %}
+            </table>
+            </p>
+            {% else %}
+            <p>THIS RESTAURANT SELLS NOTHING</p>
+            {% endif %}
+         </div>
+      </div>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+   </body>
+</html>

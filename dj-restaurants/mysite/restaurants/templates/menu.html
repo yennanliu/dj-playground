@@ -1,0 +1,29 @@
+% extends "base.html" %}
+{% load myfilters %}
+
+{% block title %} Menu {% endblock %}
+
+{% block content %}
+    <h2>{{ restaurant.name }}的Menu</h2>
+    {% if restaurant.food_set.all %}
+    <p>There are {{ restaurant.food_set.all|length }} dishes</p>
+    <table class="table table-hover">
+        <tr>
+            <th>food name</th>
+            <th>price</th>
+            <th>comment</th>
+            <th>spicy_or_not</th>
+        </tr>
+        {% for food in restaurant.food_set.all %}
+        <tr>
+            <td> {{ food.name }} </td>
+            <td> {{ food.price }} </td>
+            <td> {{ food.comment }} </td>
+            <td> {{ food.is_spicy|yes_no:"Spicy/not-spicy" }} </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p>This restaurant has nothing!</p>
+    {% endif %}
+{% endblock %}
