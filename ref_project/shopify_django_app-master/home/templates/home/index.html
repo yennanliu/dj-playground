@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+  <div id="orders">
+    <h2>Your recent orders</h2>
+    {% if orders %}
+      <ul>
+      {% for order in orders %}
+        <li>
+          <div class="order box">
+            <div class="wrapper">
+              <strong><a href="https://{{ current_shop.domain }}/admin/orders/{{ order.id }}">{{ order.name }}</a></strong>
+              <span class="price">{{ order.total_price }} {{ order.currency }}</span>
+              <span class="highlight">{{ order.financial_status }}</span>
+              by <span class="note">{{ order.billing_address.name }}</span>
+            </div>
+          </div>
+        </li>
+      {% endfor %}
+      </ul>
+    {% else %}
+      <em class="note">There are no orders in your store.</em>
+    {% endif %}
+  </div>
+
+  <h2>Some of your products</h2>
+  {% for product in products %}
+    <div class="product box">
+      <div class="wrapper">
+        {% if product.images %}
+          <img src="{{ product.images.0.small }}" />
+        {% endif %}
+
+        <h4><a href="https://{{ current_shop.domain }}/admin/products/{{ product.id }}">{{ product.title }}</a></h4>
+
+        <p class="price">{{ product.price_range }} {{ current_shop.currency }}</p>
+        <p style="margin-bottom: 0">{{ product.product_type }} <span class="note">type</span></p>
+        <p style="margin: 0">{{ product.vendor }} <span class="note">vendor</span></p>
+
+        <div style="clear:left"></div>
+      </div>
+    </div>
+  {% empty %}
+    <em class="note">There are no products in your store.</em>
+  {% endfor %}
+{% endblock %}
