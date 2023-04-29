@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1> Courses</h1>
+
+<div class="row">
+   {% for course in courses %} 
+        <div class="col-md-4" >
+        <div class="card bg-secondary mb-3" style="max-width: 20rem;">
+         <div class="card-header">
+            <a href="{% url 'course' course.id %}"> {{course.title}}</a>
+         </div>
+         <img src="{{ course.image.url }}" class="card-img-top" alt="...">
+         <div class="card-body">
+            
+           <h4 class="card-title"> From {{ course.start_date }} untill {{ course.end_date }}</h4>
+           <p class="card-text">{{course.description}}</p>
+         </div>
+       </div>
+      </div>
+   {% endfor %}
+   </div>
+
+
+
+
+{% endblock content %}

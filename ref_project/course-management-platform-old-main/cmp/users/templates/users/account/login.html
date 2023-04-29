@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load account socialaccount %}
+
+{% block head_title %}{% trans "DTC Sign In" %}{% endblock %}
+
+
+{% block content %}
+
+
+{% get_providers as socialaccount_providers %}
+
+{% if socialaccount_providers %}
+
+<style>
+  body {
+    background-color: #EAEDFD;
+  }
+  .btn-login {
+    font-size: 0.9rem;
+    letter-spacing: 0.05rem;
+    padding: 0.75rem 1rem;
+  }
+  .btn-google {
+    color: white !important;
+    background-color: #3F80EC !important;
+  }
+
+  .btn-github {
+    color: white !important;
+    background-color: #444444 !important;
+  }
+
+.btn-slack {
+  color: white !important;
+  background-color: #4A154B !important;
+}
+
+  
+
+</style>
+<div class="container">
+  <!-- <div class="socialaccount_ballot"> -->
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card border-0 shadow rounded-3 my-5">
+          <div class="card-body p-4 p-sm-5">
+            <h5 class="card-title text-center mb-5 fw-light fs-5">Sign In</h5>
+
+              
+            <form class="login" method="POST" action="{% url 'account_login' %}">
+              <div class="form-floating mb-3">
+                {% csrf_token %}
+                {{ form.as_p }}
+              </div>
+              
+              {% if redirect_field_value %}
+              <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+              {% endif %}
+              <div class="d-grid">
+              
+              <button class="primaryAction btn btn-primary btn-login text-uppercase fw-bold" type="submit">   {% trans "Sign In" %}
+
+              </button>
+              <hr class="my-4">
+            </div>
+            </form>
+            <div class="socialaccount_providers">
+            <div  class="d-grid mb-2">
+              <a class="btn btn-lg  btn-google btn-login text-uppercase fw-bold" href="{% provider_login_url 'google' %}" role="button">
+                <i class="fa fa-google me-2"></i>Signin with Google</a>
+    
+            </div>
+            <div  class="d-grid mb-2">
+              <a class="btn btn-lg  btn-github btn-login text-uppercase fw-bold" href="{% provider_login_url 'github' %}" role="button"><i class="fa fa-github me-2"></i>Signin with Github</a>
+    
+            </div>
+
+            <div  class="d-grid mb-2">
+              <a class="btn btn-lg  btn-slack btn-login text-uppercase fw-bold" href="{% provider_login_url 'slack' %}" role="button"><i class="fa fa-slack me-2"></i>Signin with Slack</a>
+    
+            </div>
+          </div>
+
+  
+
+
+
+{% include "socialaccount/snippets/login_extra.html" %}
+
+{% comment %} {% else %} {% endcomment %}
+<!-- <p>{% blocktrans %}If you have not created an account yet, then please
+<a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p> -->
+{% endif %}
+<br>
+<p>{% blocktrans %} Don't have an account?
+  <a href="{{ signup_url }}">Sign Up</a> first.{% endblocktrans %}</p>
+<a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- </div> -->
+</div>
+
+{% endblock %}

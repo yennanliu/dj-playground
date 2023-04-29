@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+{% load socialaccount %}
+{% load static %}
+<html>
+  <head>
+    <link rel="stylesheet" href="{% static 'styles/bootstrap.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>{% block head_title %}{% endblock %}</title>
+    {% block extra_head %}
+    {% endblock %}
+  </head>
+  <body>
+    <div class="container">
+    {% block body %}
+
+    {% if messages %}
+    <div>
+      <strong>Messages:</strong>
+      <ul>
+        {% for message in messages %}
+        
+        <div class="alert alert-dismissible alert-success">
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+          {{message}}
+        </div>
+
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
+    <div>
+      
+
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">DTC</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarColor02">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <!-- <a class="nav-link active" href="#">Home
+                  <span class="visually-hidden">(current)</span>
+                </a> -->
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'courses' %}">Courses</a>
+              </li>
+              {% if user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'account_profile' %}">My Profile</a>
+              </li>
+              <!-- <li class="nav-item">
+                <a class="nav-link" href="{% url 'account_email' %}">Change E-mail</a>
+              </li> -->
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'account_logout' %}">Sign Out</a>
+              </li>
+              {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'account_login' %}">Sign In</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'account_signup' %}">Sign Up</a>
+              </li>
+              {% endif %}
+              
+              
+            </ul>
+            <!-- <form class="d-flex">
+              <input class="form-control me-sm-2" type="text" placeholder="Search">
+              <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+            </form> -->
+          </div>
+        </div>
+    </nav>
+    
+
+
+    </div>
+    {% block content %}
+    {% endblock %}
+    {% endblock %}
+    {% block extra_body %}
+    {% endblock %}
+  </div> 
+  </body>
+</html>

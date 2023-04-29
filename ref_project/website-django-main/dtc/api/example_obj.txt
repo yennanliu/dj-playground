@@ -1,0 +1,110 @@
+curl -X POST -H "Content-Type: application/json" \
+    -d '{"id":"aaaaaaa",
+        "name": "AAAAAAA", 
+        "bio": "AAAAAA", 
+        "profile_image":"https://www.google.com",
+        "socials":"oooooooooooo"}' \
+    http://127.0.0.1:8000/api/people/
+
+Somth might be wrong here
+curl -X PUT -H "Content-Type: application/json" \
+    -d id="valera" -d name="valera" http://127.0.0.1:8000/api/people/11aaaaaaa/
+
+curl -X PATCH -H "Content-Type: application/json" -d '{"name":"SUKA"}' "http://127.0.0.1:8000/api/people/11aaaaaaa/"
+
+### event objects
+
+curl  http://127.0.0.1:8000/api/events/
+curl  http://127.0.0.1:8000/api/events/75/
+
+curl -X POST -H "Content-Type: application/json" \
+    -d '{
+        "time": "3021-06-21T17:00:00Z",
+        "title": "TEST EVENT BY LARISA",
+        "type": "webinar",
+        "event_link": "https://eventbrite.com",
+        "speakers": ["11aaaaaaa"]}' \
+    http://127.0.0.1:8000/api/events/
+
+
+curl -X PATCH -H "Content-Type: application/json" \
+    -d '{
+        "time": "2022-06-21T17:00:00Z",
+        "title": "TEST EVENT BY LARISA AND HER ALTEREGO"
+        }' \
+    http://127.0.0.1:8000/api/events/76/
+
+curl -X DELETE  http://127.0.0.1:8000/api/events/75/
+
+
+#### Book objects
+
+curl -X POST -H "Content-Type: application/json" \
+    -d '{
+        "id": "testtesttest",
+        "title": "TEST BOOK",
+        "description": "blah blah blah",
+        "authors": ["11aaaaaaa"],
+        "cover_image": "https://eventbrite.com",
+        "preview_image": "https://eventbrite.com",
+        "start_date": "2022-05-22",
+        "end_date": "2022-06-22",
+        "links": [
+        {
+            "text": "TEST",
+            "link": "https://www.oreilly.com"
+        },
+        {
+            "text": "TEST",
+            "link": "https://github.com"
+        }
+    ],
+        "archive": [
+        {
+            "name": "TEST",
+            "text": "Hi TEST - TEST  (untouched) hold-out method(s)?",
+            "replies": [
+                {
+                    "name": "TEST",
+                    "text": "TEST!\nYou  possible (or not ethical) control group. This is."
+                },
+                {
+                    "name": "TEST",
+                    "text": "TEST."
+                }
+            ]
+        }
+    ]
+    
+        
+    }' \
+    http://127.0.0.1:8000/api/books/
+
+
+curl  http://127.0.0.1:8000/api/books/
+curl  http://127.0.0.1:8000/api/books/testtesttest/
+
+curl -X PATCH -H "Content-Type: application/json" \
+    -d '{
+        "end_date": "2022-06-21",
+        "title": "TEST BOOK BY LARISA AND HER ALTEREGO"
+        }' \
+    http://127.0.0.1:8000/api/books/testtesttest/
+
+curl -X PATCH http://127.0.0.1:8000/api/books/testtesttest/\
+     -H 'Content-Type: application/json'\
+     -H 'Accept: application/json'\
+     -d '{
+        "id": "testtesttest", 
+        "description": "ugh",
+        "cover_image": "https://ev",
+        "preview_image": "https://ev",
+        "start_date": "2022-05-20"
+    }'
+
+curl -X DELETE  http://127.0.0.1:8000/api/books/testtesttest/
+
+
+
+
+        
