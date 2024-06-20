@@ -1,0 +1,16 @@
+on: [push]
+  
+# Allows to make the commit with the updated architecture directly in the branch that triggered this action
+permissions:
+  contents: write
+
+jobs:
+  update-architecture:
+    runs-on: ubuntu-latest
+    name: Update archtiecture diagram
+    steps:
+      - name: Invoke infragenie to commit the diagram
+        uses: Rikenunes8/infragenie-ghaction@master
+        with:
+          access_token: ${{ secrets.GITHUB_TOKEN }}
+          readme: true
