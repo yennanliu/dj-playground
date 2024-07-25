@@ -22,8 +22,11 @@ python run.py
 ```
 Run the whole thing on Docker and Nginx: cd to the project root directory and run:
 
-```
+```bash
 docker-compose up
+
+# macbook m1
+docker-compose -f docker-compose-m1.yml up
 ```
 **Note**: Make sure you change the `CAMERA_STREAM_URL` in docker compose file under Flask service. Default is 0 but webcams are not accessible from a Docker container out of the box! So an RTSP url is required. 
 
