@@ -12,6 +12,19 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 
+# https://channels.readthedocs.io/en/latest/tutorial/part_2.html
+
+ASGI_APPLICATION = "mysite.asgi.application"
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("127.0.0.1", 6379)],
+        },
+    },
+}
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -26,7 +39,6 @@ SECRET_KEY = 'django-insecure-b3+bog@y29m+c3p=)@7y)!xj8rr_6gm1k+igqe+e*rm*(x5#j+
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 

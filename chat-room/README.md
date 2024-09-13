@@ -10,6 +10,13 @@ python manage.py migrate
 # run app
 # (make sure at same level with manage.py)
 python3 manage.py runserver
+
+
+# start redis 
+brew services start redis
+
+# check
+redis-cli ping
 ```
 
 ```bash
@@ -41,6 +48,12 @@ sqlite3 db.sqlite3
 
 - http://127.0.0.1:8000/admin/
   - user, pwd : `admin`
+
+
+## Concept
+
+- channel : A channel is a mailbox where messages can be sent to. Each channel has a name. Anyone who has the name of a channel can send a message to the channel.
+- group : A group is a group of related channels. A group has a name. Anyone who has the name of a group can add/remove a channel to the group by name and send a message to all channels in the group. It is not possible to enumerate what channels are in a particular group.
 
 ## Ref
 
